@@ -1,0 +1,19 @@
+<ng-container [formGroup]="form">
+    <div class="mb-3 row">
+        <label [for]="controlName" class="col-sm-6 col-form-label">{{label}}</label>
+        <div class="col-sm-6">
+            <input class="form-control" [id]="controlName" [formControlName]="controlName" [appInputMask]="appInputMask" >
+            <span style="font-size: 80%; color: #dc3545;">
+                <span *ngIf="form.get(controlName)?.hasError('required')">
+                    Este campo es requerido
+                </span>
+                <span *ngIf="form.get(controlName)?.hasError('min')">
+                    El Valor minimo permitido es {{form.get(controlName)?.getError('min').min}}
+                </span>
+                <span *ngIf="form.get(controlName)?.hasError('max')">
+                    El Valor maximo permitido es {{form.get(controlName)?.getError('max').max}}
+                </span>
+            </span>
+        </div>
+    </div>
+</ng-container>

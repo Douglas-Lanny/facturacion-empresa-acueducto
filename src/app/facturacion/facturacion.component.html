@@ -1,0 +1,77 @@
+<div class="container">
+   
+    <div class="card m-3 p-3" *ngFor="let factura of facturas"  >
+        <h3>Factura</h3>
+        
+        <div class="row">
+            <div class="col">
+                <h6>
+                    Nombre unidad residencial: 
+                </h6>
+               
+            </div>
+            <div class="col">
+                {{factura.nombre}}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <h6>
+                    Estrato :
+                </h6>
+                
+            </div>
+            <div class="col">
+                {{factura.estrato}}
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col">
+                <h6>
+                    Zona :
+                </h6>
+               
+            </div>
+            <div class="col">
+                {{factura.zonaResidencial}}
+            </div>
+        </div>
+        <div>
+            <h4>Valor a pagar</h4>
+        </div>
+            <div class="row">
+                <div class="col">
+                    <h6>
+                        Consumo de agua: {{factura.consumoAgua}} metros cubicos 
+                    </h6>
+                </div>
+                <div class="col">
+                {{factura.costoAgua}} $ pesos
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <h6>
+                        Alcantarillado: {{factura.consumoAgua}} metros cubicos 
+                    </h6>
+                </div>
+                <div class="col">
+                {{factura.costoAgua}} $ pesos
+                </div>
+            </div>
+        <div>
+                     
+        </div>
+    
+    </div>
+    <div class="row">
+        <div class="col">
+            <button class="btn btn-primary" (click)="goBack()" >
+                Volver
+            </button>
+        </div>
+    </div>
+</div>

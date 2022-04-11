@@ -1,0 +1,65 @@
+<div class="container card" style=" margin: 5% auto; padding: 5%" *ngIf="form">
+    <h2 class="mb-4">SISTEMA DE FACTURACIÓN ACUEDUCTO</h2>
+    <div class="container mb-3">
+        <form [formGroup]="form">
+            <div class="row">
+                <div class="col-6">
+                    <app-control-base label="Precio (Pesos/metro cubico)" controlName="precioMetroCubico" [form]="form"
+                        appInputMask="^(0|[1-9]\d{0,3})$"></app-control-base>
+                </div>
+                <div class="col-6">
+                    <button class="btn btn-primary" type="button" [disabled]="form.invalid" (click)="onSubmit()">
+                        Generar factura
+                    </button>
+                </div>
+            </div>
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Unidad Residencial</th>
+                        <th scope="col">Estrato</th>
+                        <th scope="col">Zona Residencial</th>
+                        <th scope="col">Consumo Agua metros cubicos</th>
+                        <th scope="col">Facturacion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-container formArrayName="facturas">
+                        <ng-container *ngFor="let factura of facturas.controls; let i = index">
+                            <tr>
+                                <td>
+                                    {{unidadesResidenciales[i].nombre}}
+                                </td>
+                                <td>
+                                    {{unidadesResidenciales[i].estrato}}
+                                </td>
+                                <td>
+                                    {{unidadesResidenciales[i].zonaResidencial}}
+                                </td>
+
+
+                                <ng-container [formGroupName]="i">
+                                    <td>
+                                        <input  formControlName="consumoAgua">
+                                    </td>
+                                    <td>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value=""
+                                                id="flexCheckDefault" formControlName="esFactura">
+                                        </div>
+                                    </td>
+                                </ng-container>
+
+                            </tr>
+                        </ng-container>
+                    </ng-container>
+
+                </tbody>
+            </table>
+
+
+
+        </form>
+    </div>
+</div>
